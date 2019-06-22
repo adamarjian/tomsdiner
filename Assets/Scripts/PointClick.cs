@@ -1,25 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PointClick : MonoBehaviour
 {
+    private PlayerScript player;
     [SerializeField]
-    private GameObject player;
-    [SerializeField]
-    private Transform placement;
+    private GameObject placement;
+    
 
-    // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        player = GameObject.Find("Player");
-
-
+        player = GameObject.Find("Player").GetComponent<PlayerScript>();
     }
-
+    
+    
     public void PlayerPlace()
     {
         Debug.Log("clicked");
-        player.transform.position = placement.position;
+        player.placeToMove = placement.transform.position;
+    }
+
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            PlayerPlace();
+        }
+        
     }
 }
