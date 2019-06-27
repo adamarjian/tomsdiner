@@ -85,7 +85,6 @@ public class Table : MonoBehaviour
                     if (waiting && currentOrderTimer < 0)
                     {
 
-
                         // Customer leave and stuff
 
                     }
@@ -132,6 +131,13 @@ public class Table : MonoBehaviour
         currentOrderTimer = Random.Range(orderTimer.x, orderTimer.y);
         currentEatingTimer = Random.Range(eatingTimer.x, eatingTimer.y);
 
+    }
+
+    public void ServeFood()
+    {
+
+
+        
     }
 
 }
