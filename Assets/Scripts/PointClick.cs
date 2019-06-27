@@ -14,20 +14,21 @@ public class PointClick : MonoBehaviour
     {
         player = GameObject.Find("Player").GetComponent<PlayerScript>();
     }
-    
-    
-    public void PlayerPlace()
-    {
-        Debug.Log("clicked");
-        player.placeToMove = placement.transform.position;
-    }
 
     void OnMouseOver()
     {
+        Debug.Log("Mouse over");
         if (Input.GetMouseButton(0))
         {
             PlayerPlace();
         }
-        
+
     }
+
+    public void PlayerPlace()
+    {
+        player.placeToMove = placement.transform;
+    }
+
+   
 }

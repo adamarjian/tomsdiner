@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1945173495737038232}
   - component: {fileID: 1945173495737038233}
   - component: {fileID: 1945173495737038238}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a7a2bd88267ed47bb89ba8f5190aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   placement: {fileID: 1945173496391030332}
 --- !u!1 &1945173496391030332
 GameObject:
@@ -146,7 +145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945173496391030332}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1945173495737038235}
