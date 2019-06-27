@@ -18,11 +18,14 @@ public class Table : MonoBehaviour
 
     // How long before customers order
     // Range from Minimum to Max
-    private Vector2 olrderTimer;
+    private Vector2 orderTimer;
 
     // How long before customers finish eating
     // Range from Minimum to Max
     private Vector2 eatingTimer;
+
+    [SerializeField]
+    private int maxOrders;
 
     [SerializeField]
     private Order currentOrder;
@@ -42,11 +45,15 @@ public class Table : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        StateProcessing();
+
     }
 
-    float Timer;
+    //
+    bool waiting;
 
+    //
     float currentOrderTimer;
     float currentEatingTimer;
 
@@ -59,7 +66,30 @@ public class Table : MonoBehaviour
             case TableState.SEATED:
                 {
 
-                    
+                    if (!waiting)
+                    {
+
+                        // Create new food order
+                        NewFoodOrder();
+
+                        // Randomize new time
+                        RandomizeTime();
+ 
+                        // Start waiting
+                        waiting = true;
+
+                    }
+
+                    currentOrderTimer -= Time.deltaTime;
+
+                    if (waiting && currentOrderTimer < 0)
+                    {
+
+
+                        // Customer leave and stuff
+
+                    }
+
                     break;
                 }
             case TableState.EATING:
@@ -87,7 +117,20 @@ public class Table : MonoBehaviour
     public void NewFoodOrder()
     {
 
+        // Randomizer
+        System.Random randomizer = new System.Random();
 
+        // Create a new order
+        currentOrder = new Order(randomizer.Next(1, maxOrders));
+
+    }
+
+    public void RandomizeTime()
+    {
+
+        // New Randomized time
+        currentOrderTimer = Random.Range(orderTimer.x, orderTimer.y);
+        currentEatingTimer = Random.Range(eatingTimer.x, eatingTimer.y);
 
     }
 
