@@ -17,7 +17,6 @@ public class PointClick : MonoBehaviour
 
     void OnMouseOver()
     {
-        Debug.Log("Mouse over");
         if (Input.GetMouseButton(0))
         {
             PlayerPlace();
