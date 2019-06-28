@@ -11,20 +11,13 @@ public class HolderScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        hasItem = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Collider2D itemCheck = Physics2D.OverlapCircle(transform.position, 1,item);
-        if (itemCheck)
-        {
-            hasItem = false;
-        }
-        else
-        {
-            hasItem = true;
-        }
+        
+        
     }
 }
