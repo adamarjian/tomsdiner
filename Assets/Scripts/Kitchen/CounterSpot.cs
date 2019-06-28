@@ -9,12 +9,12 @@ public class CounterSpot : MonoBehaviour
 
     public GameObject readyItem;
 
-    public bool set;
+    public bool foodIsReady;
 
     // Update is called once per frame
     void Update()
     {
-        set = foodHolder.ready;
+        foodIsReady = foodHolder.ready;
         if (foodHolder.ready)
         {
             readyItem = foodHolder.food;

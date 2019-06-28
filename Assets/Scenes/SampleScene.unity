@@ -705,7 +705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodHolder: {fileID: 333710566}
   readyItem: {fileID: 0}
-  set: 0
+  foodIsReady: 0
 --- !u!1001 &1281948689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -772,6 +772,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193519399865776261, guid: 5f7958177ca93bd4583a2c2a3810c88a,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193519399865776261, guid: 5f7958177ca93bd4583a2c2a3810c88a,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f7958177ca93bd4583a2c2a3810c88a, type: 3}
@@ -945,6 +955,8 @@ GameObject:
   - component: {fileID: 1801628839}
   - component: {fileID: 1801628841}
   - component: {fileID: 1801628842}
+  - component: {fileID: 1801628843}
+  - component: {fileID: 1801628844}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -1052,6 +1064,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee45374af2628d438bc333544214f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selected: 0
+--- !u!114 &1801628843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801628838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac0791738b8ece46a152fb84bce0116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxPossibleCustomers: 4
+  totalCustomersInGroup: 1
+--- !u!50 &1801628844
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801628838}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1871816201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,11 +1452,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ff55663ebac5e4999bfb894b8767a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orderTimer: {x: 0, y: 0}
+  eatingTimer: {x: 0, y: 0}
   maxOrders: 0
-  maxCustomers: 0
+  maxCustomers: 4
   currentOrder:
     TimeToEat: 0
     IncomeFromOrder: 0
     FoodOrders: 
   currentCustomer: {fileID: 0}
   currentTableState: 0
+  waiting: 0
+  currentOrderTimer: 0
+  currentEatingTimer: 0

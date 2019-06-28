@@ -9,9 +9,12 @@ public class DragAndDrop : MonoBehaviour
 
     private Vector2 startPos;
 
+    private Customer customer;
+
     private void Start()
     {
         startPos = transform.position;
+        customer = GetComponent<Customer>();
     }
     private void Update()
     {
@@ -38,9 +41,14 @@ public class DragAndDrop : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Customer seated");
-        collision.GetComponent<Table>().SeatTable(GetComponent<Customer>());
-        Destroy(gameObject);
+        
+        if (selected)
+        {
+            Debug.Log("Customer seated");
+            collision.GetComponent<Table>().SeatTable(customer);
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
        
     }
 }

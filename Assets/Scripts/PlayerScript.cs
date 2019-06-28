@@ -17,6 +17,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //move to clicked object
         if (Input.GetMouseButtonUp(0))
         {
             set.target = placeToMove;

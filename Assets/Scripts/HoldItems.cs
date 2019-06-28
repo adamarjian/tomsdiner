@@ -13,7 +13,7 @@ public class HoldItems : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<CounterSpot>().set)
+        if (collision.GetComponent<CounterSpot>().foodIsReady)
         {
             if (!hold1.GetComponent<HolderScript>().hasItem)
             {
@@ -24,10 +24,7 @@ public class HoldItems : MonoBehaviour
             {
                 hold2.GetComponent<HolderScript>().hasItem = true;
             }
-        }
-        else
-        {
-
+            collision.GetComponent<CounterSpot>().foodIsReady = false;
         }
     }
 

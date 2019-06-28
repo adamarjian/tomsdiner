@@ -18,10 +18,12 @@ public class Table : MonoBehaviour
 
     // How long before customers order
     // Range from Minimum to Max
+    [SerializeField]
     private Vector2 orderTimer;
 
     // How long before customers finish eating
     // Range from Minimum to Max`
+    [SerializeField]
     private Vector2 eatingTimer;
 
     // Max orders the table should handle
@@ -65,11 +67,14 @@ public class Table : MonoBehaviour
     }
 
     //
-    bool waiting;
+    [SerializeField]
+    private bool waiting;
 
     //
-    float currentOrderTimer;
-    float currentEatingTimer;
+    [SerializeField]
+    private float currentOrderTimer;
+    [SerializeField]
+    private float currentEatingTimer;
 
     public void StateProcessing()
     {
