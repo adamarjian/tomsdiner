@@ -210,6 +210,14 @@ public class Table : MonoBehaviour
 
         }
 
+        if (currentOrder.FoodOrders.Count == 0 || currentOrder.FoodOrders == null)
+        {
+
+            waiting = false;
+            currentTableState = TableState.EATING;
+
+        }
+
         
     }
 
