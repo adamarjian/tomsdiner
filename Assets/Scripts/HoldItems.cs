@@ -13,9 +13,16 @@ public class HoldItems : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (CounterSpot.)
+        if (collision.GetComponent<CounterSpot>().set)
         {
+            if (!hold1.GetComponent<HolderScript>().hasItem)
+            {
 
+            }
+            else if (!hold2.GetComponent<HolderScript>().hasItem)
+            {
+
+            }
         }
     }
 
