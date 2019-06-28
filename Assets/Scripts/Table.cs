@@ -21,7 +21,7 @@ public class Table : MonoBehaviour
     private Vector2 orderTimer;
 
     // How long before customers finish eating
-    // Range from Minimum to Max
+    // Range from Minimum to Max`
     private Vector2 eatingTimer;
 
     // Max orders the table should handle
