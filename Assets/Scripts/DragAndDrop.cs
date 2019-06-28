@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour
 {
+    [SerializeField]
     private bool selected;
 
     private Vector2 startPos;
@@ -23,6 +24,7 @@ public class DragAndDrop : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             selected = false;
+            
         }
     }
 
@@ -32,5 +34,13 @@ public class DragAndDrop : MonoBehaviour
         {
             selected = true;
         } 
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Customer seated");
+        collision.GetComponent<Table>().SeatTable(GetComponent<Customer>());
+        Destroy(gameObject);
+       
     }
 }
