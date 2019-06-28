@@ -15,14 +15,22 @@ public class HoldItems : MonoBehaviour
     {
         if (collision.GetComponent<CounterSpot>().set)
         {
-            if (!hold1.GetComponent<HolderScript>().hasItem)
+            if (hold1.GetComponent<HolderScript>().hasItem)
             {
-
+                GameObject food1 = Instantiate(collision.GetComponent<CounterSpot>().readyItem, hold1.transform.position, Quaternion.identity);
+                food1.name = collision.GetComponent<CounterSpot>().readyItem.name;
+                food1.transform.position = hold1.transform.position;
             }
-            else if (!hold2.GetComponent<HolderScript>().hasItem)
+            else if (hold2.GetComponent<HolderScript>().hasItem)
             {
-
+                GameObject food2 = Instantiate(collision.GetComponent<CounterSpot>().readyItem, hold2.transform.position, Quaternion.identity);
+                food2.name = collision.GetComponent<CounterSpot>().readyItem.name;
+                food2.transform.position = hold2.transform.position;
             }
+        }
+        else
+        {
+
         }
     }
 

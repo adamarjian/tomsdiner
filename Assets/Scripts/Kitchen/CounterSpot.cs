@@ -21,4 +21,9 @@ public class CounterSpot : MonoBehaviour
             foodHolder.ready = false;
         }
     }
+
+     void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    }
 }
