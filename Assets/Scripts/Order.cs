@@ -15,6 +15,13 @@ public enum FoodTypes
 public class Order
 {
 
+    // A different approach
+    // Depending on the food, their time to eat
+    // is based on this time frame instead
+    public float TimeToEat;
+
+    public float IncomeFromOrder;
+
     public List<FoodTypes> FoodOrders;
 
     public Order(int Total)

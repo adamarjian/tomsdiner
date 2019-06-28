@@ -60,6 +60,7 @@ public class Table : MonoBehaviour
     public void StateProcessing()
     {
 
+        // Frame by frame state executions
         switch (currentTableState)
         {
 
@@ -94,20 +95,23 @@ public class Table : MonoBehaviour
             case TableState.EATING:
                 {
 
-                    break;
-                }
-            case TableState.BILLING:
-                {
+                    currentEatingTimer -= Time.deltaTime;
+                    
+                    // Once customers are done eating switch to billing
+                    if (currentEatingTimer < 0)
+                    {
+
+                        currentTableState = TableState.BILLING;
+
+                    }
+
+                    // Change customer animation to eating maybe
 
 
                     break;
                 }
-            case TableState.CLEANUP:
-                {
-
-
-                    break;
-                }
+            case TableState.BILLING: break;
+            case TableState.CLEANUP: break;
 
         }
 
@@ -133,9 +137,41 @@ public class Table : MonoBehaviour
 
     }
 
-    public void ServeFood()
+    public void BillTable()
     {
 
+        // Process Billing logic here
+
+        currentTableState = TableState.CLEANUP;
+
+    }
+
+    public void CleanUpTable()
+    {
+
+        // Reset table
+        currentOrder = null;
+        currentCustomer = null;
+        currentTableState = TableState.UNSEATED;
+
+    }
+
+    public void ServeFood(FoodTypes ServedFood)
+    {
+
+        if (currentOrder.FoodOrders.Contains(ServedFood))
+        {
+
+            currentOrder.FoodOrders.Remove(ServedFood);
+
+        }
+        else
+        {
+
+            // Points lost logic
+            // or time lost
+
+        }
 
         
     }
