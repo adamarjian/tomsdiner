@@ -33,8 +33,7 @@ public class Table : MonoBehaviour
     private int maxCustomers;
 
     // Current running order
-    [SerializeField]
-    private Order currentOrder;
+    public Order currentOrder;
 
     // Current customer
     [SerializeField]
