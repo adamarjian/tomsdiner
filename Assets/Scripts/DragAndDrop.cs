@@ -42,12 +42,16 @@ public class DragAndDrop : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if (selected)
+        if (selected && collision.GetComponent<Table>().currentTableState==TableState.UNSEATED)
         {
             Debug.Log("Customer seated");
             collision.GetComponent<Table>().SeatTable(customer);
             gameObject.SetActive(false);
             Destroy(gameObject);
+        }
+        else
+        {
+            transform.position = startPos;
         }
        
     }

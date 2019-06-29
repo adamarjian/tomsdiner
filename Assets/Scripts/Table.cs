@@ -41,8 +41,8 @@ public class Table : MonoBehaviour
     [SerializeField]
     private Customer currentCustomer;
 
-    [SerializeField]
-    private TableState currentTableState;
+    
+    public TableState currentTableState;
 
     // Need reference to a player field here
 
