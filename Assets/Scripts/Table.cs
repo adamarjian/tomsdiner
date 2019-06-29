@@ -41,6 +41,7 @@ public class Table : MonoBehaviour
     [SerializeField]
     private Customer currentCustomer;
 
+    private SpriteRenderer tableSprite;
     
     public TableState currentTableState;
 
@@ -55,7 +56,7 @@ public class Table : MonoBehaviour
         currentOrder = null;
         currentCustomer = null;
         currentTableState = TableState.UNSEATED;
-
+        tableSprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -193,21 +194,23 @@ public class Table : MonoBehaviour
 
     }
 
-    public void ServeFood(FoodTypes ServedFood)
+    public void ServeFood(List<FoodTypes> ServedFood)
     {
-
-        if (currentOrder.FoodOrders.Contains(ServedFood))
+        for (int i = 0; i < ServedFood.Count; i++)
         {
+            if (currentOrder.FoodOrders.Contains(ServedFood[i]))
+            {
 
-            currentOrder.FoodOrders.Remove(ServedFood);
+                currentOrder.FoodOrders.Remove(ServedFood[i]);
 
-        }
-        else
-        {
+            }
+            else
+            {
 
-            // Points lost logic
-            // or time lost
+                // Points lost logic
+                // or time lost
 
+            }
         }
 
         if (currentOrder.FoodOrders.Count == 0 || currentOrder.FoodOrders == null)

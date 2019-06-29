@@ -5,20 +5,25 @@ using UnityEngine;
 public class MakeFood : MonoBehaviour
 {
     public bool ready;
+    
+    public Order foodToCook;
 
-    public GameObject food;
+    public bool startCooking = false;
 
-    public GameObject[] foodItems;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float cookingTime = 10;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (startCooking)
+        {
+            cookingTime -= Time.deltaTime;
+            if (cookingTime<=0)
+            {
+                ready = true;
+                cookingTime = 10;
+            }
+        }
     }
+    
 }

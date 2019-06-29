@@ -10,22 +10,42 @@ public class HoldItems : MonoBehaviour
     private GameObject hold1;
     [SerializeField]
     private GameObject hold2;
-    
+
+    public List<Order> orderHolder;
+
+    public List<Order> readyOrders;
+
+   
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<CounterSpot>().foodIsReady)
+        if (collision.gameObject.tag == "Table" && readyOrders[0]==null)
         {
-            if (!hold1.GetComponent<HolderScript>().hasItem)
-            {
+            orderHolder.Add(collision.GetComponent<Table>().currentOrder);
 
-                hold1.GetComponent<HolderScript>().hasItem = true;
-            }
-            else if (!hold2.GetComponent<HolderScript>().hasItem)
-            {
-                hold2.GetComponent<HolderScript>().hasItem = true;
-            }
-            collision.GetComponent<CounterSpot>().foodIsReady = false;
         }
+        else if (collision.gameObject.tag == "Kitchen" && !collision.GetComponent<MakeFood>().ready)
+        {
+            if (orderHolder!=null)
+            {
+                MakeFood kitchen = collision.GetComponent<MakeFood>();
+                kitchen.foodToCook = orderHolder[0];
+                orderHolder.Remove(orderHolder[0]);
+                kitchen.startCooking = true;
+            }
+            
+        }
+        else if (collision.gameObject.tag == "Kitchen" && collision.GetComponent<MakeFood>().ready)
+        {
+            readyOrders[0] = collision.GetComponent<MakeFood>().foodToCook;
+            collision.GetComponent<MakeFood>().ready = false;
+            collision.GetComponent<MakeFood>().foodToCook = null;
+        }
+        else if (collision.gameObject.tag == "Table" && readyOrders != null)
+        {
+            collision.GetComponent<Table>().ServeFood(readyOrders[0].FoodOrders);
+        }
+
+
     }
 
 }

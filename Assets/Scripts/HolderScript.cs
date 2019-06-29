@@ -8,6 +8,9 @@ public class HolderScript : MonoBehaviour
 
     public bool hasItem;
 
+    [SerializeField]
+    private int hand;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,4 +23,6 @@ public class HolderScript : MonoBehaviour
         
         
     }
+
+
 }
