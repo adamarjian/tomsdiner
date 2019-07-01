@@ -56,6 +56,7 @@ public class HoldItems : MonoBehaviour
                     readyOrders.Add(collision.GetComponent<MakeFood>().foodToCook);
                     collision.GetComponent<MakeFood>().ready = false;
                     collision.GetComponent<MakeFood>().foodToCook = null;
+                    collision.GetComponent<MakeFood>().startCooking = false;
                 }
                 break;
             default:
