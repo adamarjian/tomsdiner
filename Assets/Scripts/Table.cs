@@ -71,6 +71,7 @@ public class Table : MonoBehaviour
     [SerializeField]
     private bool waiting;
 
+    public bool orderGotten = false;
     //
     [SerializeField]
     private float currentOrderTimer;
@@ -190,6 +191,7 @@ public class Table : MonoBehaviour
         // Reset table
         currentOrder = null;
         currentCustomer = null;
+        orderGotten = false;
         currentTableState = TableState.UNSEATED;
 
     }
