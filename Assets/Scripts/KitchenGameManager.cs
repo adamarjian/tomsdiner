@@ -29,11 +29,17 @@ public class KitchenGameManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI pointsDisplay;
 
-    public static int totalPoints;
+    public static int totalPoints = 0;
 
     public static int LostCustomers;
 
     public static int totalSpawnedCustomers;
+
+    public int BreadPrice;
+
+    public int MilkshakePrice;
+
+    public int SteakPrice;
 
     // Start is called before the first frame update
     void Start()
