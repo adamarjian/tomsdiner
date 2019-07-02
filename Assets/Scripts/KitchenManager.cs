@@ -6,12 +6,21 @@ using UnityEngine.UI;
 public class KitchenManager : MonoBehaviour
 {
 
-    [SerializeField]
-    private bool gameOver;
-
     // Starting time for all racers
     [SerializeField]
     private Vector3 startTime = new Vector3(0, 0, 20);
+
+    [SerializeField]
+    private int TotalCustomersThisRound;
+
+    [SerializeField]
+    private int TotalSpawnedCustomers;
+
+    [SerializeField]
+    private int LostCustomers;
+
+    [SerializeField]
+    private int MaxLostCustomers;
 
     [SerializeField]
     private float currentTime = 0;
@@ -30,8 +39,6 @@ public class KitchenManager : MonoBehaviour
     public void SetupGame()
     {
 
-        gameOver = false;
-
         float hoursInSeconds = startTime.x * 3600;
         float minutesInSeconds = startTime.y * 60;
         float seconds = startTime.z;
@@ -46,6 +53,13 @@ public class KitchenManager : MonoBehaviour
 
         Countdown();
 
+        if (LostCustomers > MaxLostCustomers)
+        {
+
+            EndGame();
+
+        }
+
     }
 
     public void Countdown()
@@ -54,7 +68,7 @@ public class KitchenManager : MonoBehaviour
         // Start losing time
         currentTime -= Time.deltaTime;
 
-        if (currentTime <= 0 && !gameOver) EndGame(); // EndGame when timer reaches 0
+        if (currentTime <= 0) EndGame(); // EndGame when timer reaches 0
         else UpdateDisplayTimer(); // Update display timer with current time
 
     }
@@ -62,8 +76,6 @@ public class KitchenManager : MonoBehaviour
     public void EndGame()
     {
 
-        // End Game
-        gameOver = true;
 
         // Show cursor 
         Cursor.lockState = CursorLockMode.None;

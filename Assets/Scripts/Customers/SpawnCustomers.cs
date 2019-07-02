@@ -9,6 +9,9 @@ public class SpawnCustomers : MonoBehaviour
     private float spawnTimer = 10.0f;
 
     [SerializeField]
+    private float spawnTimeModifier;
+
+    [SerializeField]
     private GameObject customer;
 
     [SerializeField]
@@ -38,8 +41,6 @@ public class SpawnCustomers : MonoBehaviour
         }
 
     }
-
-
 
     public void SpawnCustomer()
     {
