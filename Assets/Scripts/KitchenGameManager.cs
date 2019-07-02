@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KitchenManager : MonoBehaviour
+public class KitchenGameManager : MonoBehaviour
 {
 
     // Starting time for all racers
@@ -11,22 +11,26 @@ public class KitchenManager : MonoBehaviour
     private Vector3 startTime = new Vector3(0, 0, 20);
 
     [SerializeField]
-    private int TotalCustomersThisRound;
+    private int totalCustomersThisRound;
 
     [SerializeField]
-    private int TotalSpawnedCustomers;
+    private int totalSpawnedCustomers;
 
     [SerializeField]
-    private int LostCustomers;
-
-    [SerializeField]
-    private int MaxLostCustomers;
+    private int maxLostCustomers;
 
     [SerializeField]
     private float currentTime = 0;
 
     [SerializeField]
     private Text timerDisplay;
+
+    [SerializeField]
+    private Text pointsDisplay;
+
+    private static int totalPoints;
+
+    public static int LostCustomers;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +57,9 @@ public class KitchenManager : MonoBehaviour
 
         Countdown();
 
-        if (LostCustomers > MaxLostCustomers)
+        UpdateUIDisplay();
+
+        if (LostCustomers > maxLostCustomers)
         {
 
             EndGame();
@@ -69,7 +75,6 @@ public class KitchenManager : MonoBehaviour
         currentTime -= Time.deltaTime;
 
         if (currentTime <= 0) EndGame(); // EndGame when timer reaches 0
-        else UpdateDisplayTimer(); // Update display timer with current time
 
     }
 
@@ -79,6 +84,17 @@ public class KitchenManager : MonoBehaviour
 
         // Show cursor 
         Cursor.lockState = CursorLockMode.None;
+
+    }
+
+    public void UpdateUIDisplay()
+    {
+
+        // Update Points Display
+        pointsDisplay.text = totalPoints.ToString();
+
+        // Update Time Display
+        UpdateDisplayTimer();
 
     }
 
@@ -96,7 +112,7 @@ public class KitchenManager : MonoBehaviour
         if (seconds < 0) seconds = 0;
 
         // Put all integers into a string
-        string timeToDisplay = string.Format("{0}:{1}:{2}", hours, minutes, seconds);
+        string timeToDisplay = string.Format("{0}:{1}", minutes, seconds);
 
         // Update string to display
         timerDisplay.text = timeToDisplay;

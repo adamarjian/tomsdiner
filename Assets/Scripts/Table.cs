@@ -109,6 +109,8 @@ public class Table : MonoBehaviour
                     {
 
                         // Customer leave and stuff
+                        KitchenGameManager.LostCustomers++;
+
 
                     }
 
