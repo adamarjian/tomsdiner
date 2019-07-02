@@ -20,16 +20,16 @@ public class Order
     // is based on this time frame instead
     public float timeToEat;
 
-    public int incomeFromOrder;
+    public int incomeFromOrder = 0;
 
     public List<FoodTypes> FoodOrders;
 
-    public int BreadPrice;
-    public int MilkshakePrice;
-    public int SteakPrice;
+    public KitchenGameManager GameManager;
 
     public Order(int Total)
     {
+
+        GameManager = GameObject.FindObjectOfType<KitchenGameManager>();
 
         // Initialize our Food Order List
         FoodOrders = new List<FoodTypes>();
@@ -60,20 +60,20 @@ public class Order
                 case FoodTypes.BREAD:
                     {
 
-                        incomeFromOrder += BreadPrice;
+                        incomeFromOrder += GameManager.BreadPrice;
                         break;
                     }
 
                 case FoodTypes.MILKSHAKE:
                     {
 
-                        incomeFromOrder += MilkshakePrice;
+                        incomeFromOrder += GameManager.MilkshakePrice;
                         break;
                     }
                 case FoodTypes.STEAK:
                     {
 
-                        incomeFromOrder += SteakPrice;
+                        incomeFromOrder += GameManager.SteakPrice;
                         break;
                     }
 
