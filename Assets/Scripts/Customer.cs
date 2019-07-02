@@ -26,7 +26,9 @@ public class Customer : MonoBehaviour
     public void GenerateRandomCustomer()
     {
 
-
+        // Generate a random number of customers in this group
+        System.Random randomizer = new System.Random();
+        totalCustomersInGroup = randomizer.Next(1, MaxPossibleCustomers);
 
     }
 
