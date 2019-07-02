@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class SpawnCustomers : MonoBehaviour
 {
+
+    [SerializeField]
+    private float spawnTimer = 10.0f;
+
     [SerializeField]
     private GameObject customer;
+
     [SerializeField]
     private LayerMask whatIsCustomer;
 
@@ -24,7 +29,6 @@ public class SpawnCustomers : MonoBehaviour
         {
             if (!spawned)
             {
-                StartCoroutine(WaitForCustomer());
                 spawned = true;
             }
         }
@@ -32,12 +36,16 @@ public class SpawnCustomers : MonoBehaviour
         {
             spawned = false;
         }
+
     }
 
-    IEnumerator WaitForCustomer()
+
+
+    public void SpawnCustomer()
     {
-        yield return new WaitForSeconds(10f);
+
         GameObject newCustomer = Instantiate(customer, transform.position, Quaternion.identity);
+
     }
 
 }
