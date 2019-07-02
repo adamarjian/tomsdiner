@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class KitchenGameManager : MonoBehaviour
 {
@@ -23,10 +24,10 @@ public class KitchenGameManager : MonoBehaviour
     private float currentTime = 0;
 
     [SerializeField]
-    private Text timerDisplay;
+    private TextMeshProUGUI timerDisplay;
 
     [SerializeField]
-    private Text pointsDisplay;
+    private TextMeshProUGUI pointsDisplay;
 
     public static int totalPoints;
 
