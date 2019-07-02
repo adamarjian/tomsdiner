@@ -199,6 +199,8 @@ public class Table : MonoBehaviour
 
         currentTableState = TableState.CLEANUP;
 
+        KitchenGameManager.totalPoints += currentOrder.incomeFromOrder + (int)(currentOrderTimer * 100);
+
     }
 
     public void CleanUpTable()

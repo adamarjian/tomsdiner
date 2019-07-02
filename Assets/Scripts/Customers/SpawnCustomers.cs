@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpawnCustomers : MonoBehaviour
 {
 
+    public bool canSpawn;
+
     [SerializeField]
     private float spawnTimer = 10.0f;
 
@@ -17,27 +19,37 @@ public class SpawnCustomers : MonoBehaviour
     [SerializeField]
     private LayerMask whatIsCustomer;
 
-    private bool spawned = false;
+    private float currentSpawnTimer;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        currentSpawnTimer = spawnTimer;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Collider2D checkCustomer = Physics2D.OverlapCircle(transform.position, 1, whatIsCustomer);
-        if (!checkCustomer)
+        if (canSpawn && currentSpawnTimer < 0)
         {
-            if (!spawned)
-            {
-                spawned = true;
-            }
+
+            SpawnCustomer();
+
+            // Add total spawned customers
+            KitchenGameManager.totalSpawnedCustomers++;
+
+            // With each successive spawn, their is a chance that the spawn timer will go faster
+            spawnTimer -= spawnTimeModifier * Random.Range(0, 1);
+            currentSpawnTimer = spawnTimer;
+
         }
         else
         {
-            spawned = false;
+
+            currentSpawnTimer -= Time.deltaTime;
+
         }
 
     }

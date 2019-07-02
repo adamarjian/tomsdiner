@@ -11,10 +11,10 @@ public class KitchenGameManager : MonoBehaviour
     private Vector3 startTime = new Vector3(0, 0, 20);
 
     [SerializeField]
-    private int totalCustomersThisRound;
+    private SpawnCustomers spawner;
 
     [SerializeField]
-    private int totalSpawnedCustomers;
+    private int totalCustomersThisRound;
 
     [SerializeField]
     private int maxLostCustomers;
@@ -28,9 +28,11 @@ public class KitchenGameManager : MonoBehaviour
     [SerializeField]
     private Text pointsDisplay;
 
-    private static int totalPoints;
+    public static int totalPoints;
 
     public static int LostCustomers;
+
+    public static int totalSpawnedCustomers;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +61,8 @@ public class KitchenGameManager : MonoBehaviour
 
         UpdateUIDisplay();
 
+        if (totalSpawnedCustomers == totalCustomersThisRound) spawner.canSpawn = false;
+
         if (LostCustomers > maxLostCustomers)
         {
 
@@ -80,7 +84,6 @@ public class KitchenGameManager : MonoBehaviour
 
     public void EndGame()
     {
-
 
         // Show cursor 
         Cursor.lockState = CursorLockMode.None;

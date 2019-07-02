@@ -18,11 +18,15 @@ public class Order
     // A different approach
     // Depending on the food, their time to eat
     // is based on this time frame instead
-    public float TimeToEat;
+    public float timeToEat;
 
-    public float IncomeFromOrder;
+    public int incomeFromOrder;
 
     public List<FoodTypes> FoodOrders;
+
+    public int BreadPrice;
+    public int MilkshakePrice;
+    public int SteakPrice;
 
     public Order(int Total)
     {
@@ -42,6 +46,38 @@ public class Order
 
             // Determine if that food order has not been added to our list
             if (!FoodOrders.Contains(NewFood)) FoodOrders.Add(NewFood);
+
+        }
+
+
+        for (int i = 0; i < FoodOrders.Count; i++)
+        {
+
+            switch(FoodOrders[i])
+            {
+
+
+                case FoodTypes.BREAD:
+                    {
+
+                        incomeFromOrder += BreadPrice;
+                        break;
+                    }
+
+                case FoodTypes.MILKSHAKE:
+                    {
+
+                        incomeFromOrder += MilkshakePrice;
+                        break;
+                    }
+                case FoodTypes.STEAK:
+                    {
+
+                        incomeFromOrder += SteakPrice;
+                        break;
+                    }
+
+            }
 
         }
 
