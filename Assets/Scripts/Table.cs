@@ -44,6 +44,7 @@ public class Table : MonoBehaviour
     private SpriteRenderer tableSprite;
     
     public TableState currentTableState;
+    
 
     // Need reference to a player field here
 
@@ -87,7 +88,7 @@ public class Table : MonoBehaviour
 
             case TableState.SEATED:
                 {
-
+                    tableSprite.color = Color.blue;
                     if (!waiting)
                     {
 
@@ -115,7 +116,7 @@ public class Table : MonoBehaviour
                 }
             case TableState.EATING:
                 {
-
+                    tableSprite.color = Color.yellow;
                     currentEatingTimer -= Time.deltaTime;
                     
                     // Once customers are done eating switch to billing
@@ -131,9 +132,22 @@ public class Table : MonoBehaviour
 
                     break;
                 }
-            case TableState.BILLING: break;
-            case TableState.CLEANUP: break;
-
+            case TableState.BILLING:
+                {
+                    tableSprite.color = Color.cyan;
+                }
+                break;
+                
+            case TableState.CLEANUP:
+                {
+                    tableSprite.color = Color.grey;
+                }
+                break;
+            default:
+                {
+                    tableSprite.color = Color.white;
+                }
+                break;
         }
 
     }

@@ -147,8 +147,8 @@ MonoBehaviour:
   currentTableState: 0
   waiting: 0
   orderGotten: 0
-  currentOrderTimer: 0
-  currentEatingTimer: 0
+  currentOrderTimer: 20
+  currentEatingTimer: 5
 --- !u!61 &4565937408349027601
 BoxCollider2D:
   m_ObjectHideFlags: 0
