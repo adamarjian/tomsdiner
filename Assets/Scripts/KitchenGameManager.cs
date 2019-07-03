@@ -83,15 +83,19 @@ public class KitchenGameManager : MonoBehaviour
             spawner.canSpawn = false;
 
             int TablesWithCustomers = 0;
+            int TablesThatAreNotCleanedUp = 0;
 
             for (int i = 0; i < allTables.Count; i++)
             {
 
                 if (allTables[i].CurrentCustomer != null) TablesWithCustomers++;
+                if (allTables[i].currentTableState == TableState.CLEANUP) TablesThatAreNotCleanedUp++;
 
             }
 
-            if (FindObjectsOfType<Customer>().Length == 0 && TablesWithCustomers == 0)
+            if (FindObjectsOfType<Customer>().Length == 0 
+                && TablesWithCustomers == 0
+                && TablesThatAreNotCleanedUp == 0)
             {
 
                 EndGame();
