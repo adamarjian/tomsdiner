@@ -41,6 +41,8 @@ public class Table : MonoBehaviour
     [SerializeField]
     private Customer currentCustomer;
 
+    public Customer CurrentCustomer { get => currentCustomer; }
+
     private SpriteRenderer tableSprite;
     
     public TableState currentTableState;

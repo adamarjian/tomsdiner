@@ -32,6 +32,9 @@ public class KitchenGameManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI pointsDisplay;
 
+    [SerializeField]
+    private List<Table> allTables;
+
     public int BreadPrice;
 
     public int MilkshakePrice;
@@ -75,7 +78,27 @@ public class KitchenGameManager : MonoBehaviour
 
         UpdateUIDisplay();
 
-        if (totalSpawnedCustomers == totalCustomersThisRound) spawner.canSpawn = false;
+        if (totalSpawnedCustomers == totalCustomersThisRound)
+        {
+            spawner.canSpawn = false;
+
+            int TablesWithCustomers = 0;
+
+            for (int i = 0; i < allTables.Count; i++)
+            {
+
+                if (allTables[i].CurrentCustomer != null) TablesWithCustomers++;
+
+            }
+
+            if (FindObjectsOfType<Customer>().Length == 0 && TablesWithCustomers == 0)
+            {
+
+                EndGame();
+
+            }
+
+        }
 
         if (LostCustomers > maxLostCustomers) EndGame();
 
