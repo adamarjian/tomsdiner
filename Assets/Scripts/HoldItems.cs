@@ -13,9 +13,11 @@ public class HoldItems : MonoBehaviour
 
     public List<Order> orderHolder;
 
-    public List<Order> readyOrders;
+    public FoodTypes readyOrder;
 
-   
+    [SerializeField]
+    private bool removeOrder;
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         string tagCheck = collision.gameObject.tag;
@@ -30,7 +32,12 @@ public class HoldItems : MonoBehaviour
                 }
                 else if (collision.GetComponent<Table>().currentTableState == TableState.SEATED && collision.GetComponent<Table>().orderGotten)
                 {
-                    collision.GetComponent<Table>().ServeFood(readyOrders[0].FoodOrders);
+                    if (removeOrder)
+                    {
+                        collision.GetComponent<Table>().ServeFood(readyOrder);
+                        removeOrder = false;
+                    }
+
                 }
                 else if (collision.GetComponent<Table>().currentTableState == TableState.BILLING)
                 {
@@ -42,21 +49,21 @@ public class HoldItems : MonoBehaviour
                 }
                 break;
             case "Kitchen":
-                if (!collision.GetComponent<MakeFood>().ready)
+                if (!collision.GetComponent<MakeFood>().ready && !removeOrder)
                 {
 
                     MakeFood kitchen = collision.GetComponent<MakeFood>();
-                    kitchen.foodToCook = orderHolder[0];
+                    kitchen.foodToCook = orderHolder[0].FoodOrders[0];
                     orderHolder.Remove(orderHolder[0]);
                     kitchen.startCooking = true;
 
                 }
                 else if (collision.GetComponent<MakeFood>().ready)
                 {
-                    readyOrders.Add(collision.GetComponent<MakeFood>().foodToCook);
+                    readyOrder=collision.GetComponent<MakeFood>().foodToCook;
                     collision.GetComponent<MakeFood>().ready = false;
-                    collision.GetComponent<MakeFood>().foodToCook = null;
                     collision.GetComponent<MakeFood>().startCooking = false;
+                    removeOrder = true;
                 }
                 break;
             default:

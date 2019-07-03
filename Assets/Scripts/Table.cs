@@ -217,23 +217,20 @@ public class Table : MonoBehaviour
 
     }
 
-    public void ServeFood(List<FoodTypes> ServedFood)
+    public void ServeFood(FoodTypes ServedFood)
     {
-        for (int i = 0; i < ServedFood.Count; i++)
+        if (currentOrder.FoodOrders.Contains(ServedFood))
         {
-            if (currentOrder.FoodOrders.Contains(ServedFood[i]))
-            {
 
-                currentOrder.FoodOrders.Remove(ServedFood[i]);
+            currentOrder.FoodOrders.Remove(ServedFood);
 
-            }
-            else
-            {
+        }
+        else
+        {
 
-                // Points lost logic
-                // or time lost
+            // Points lost logic
+            // or time lost
 
-            }
         }
 
         if (currentOrder.FoodOrders.Count == 0 || currentOrder.FoodOrders == null)

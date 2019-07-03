@@ -6,7 +6,7 @@ public class MakeFood : MonoBehaviour
 {
     public bool ready;
     
-    public Order foodToCook;
+    public FoodTypes foodToCook;
 
     public bool startCooking = false;
 
