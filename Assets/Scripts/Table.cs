@@ -200,6 +200,7 @@ public class Table : MonoBehaviour
         currentTableState = TableState.CLEANUP;
 
         KitchenGameManager.totalPoints += currentOrder.incomeFromOrder;
+        KitchenGameManager.totalCustomersServedThisRound++;
 
     }
 

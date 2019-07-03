@@ -18,6 +18,9 @@ public class KitchenGameManager : MonoBehaviour
     private int totalCustomersThisRound;
 
     [SerializeField]
+    private int totalCustomersToServe;
+
+    [SerializeField]
     private int maxLostCustomers;
 
     [SerializeField]
@@ -29,17 +32,19 @@ public class KitchenGameManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI pointsDisplay;
 
+    public int BreadPrice;
+
+    public int MilkshakePrice;
+
+    public int SteakPrice;
+
     public static int totalPoints = 0;
 
     public static int LostCustomers;
 
     public static int totalSpawnedCustomers;
 
-    public int BreadPrice;
-
-    public int MilkshakePrice;
-
-    public int SteakPrice;
+    public static int totalCustomersServedThisRound;
 
     // Start is called before the first frame update
     void Start()
@@ -72,12 +77,7 @@ public class KitchenGameManager : MonoBehaviour
 
         if (totalSpawnedCustomers == totalCustomersThisRound) spawner.canSpawn = false;
 
-        if (LostCustomers > maxLostCustomers)
-        {
-
-            EndGame();
-
-        }
+        if (LostCustomers > maxLostCustomers) EndGame();
 
     }
 
