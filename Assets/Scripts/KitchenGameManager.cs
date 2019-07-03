@@ -56,6 +56,8 @@ public class KitchenGameManager : MonoBehaviour
         float minutesInSeconds = startTime.y * 60;
         float seconds = startTime.z;
 
+        spawner.canSpawn = true;
+
         currentTime += hoursInSeconds + minutesInSeconds + seconds;
 
     }
