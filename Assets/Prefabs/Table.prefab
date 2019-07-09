@@ -140,7 +140,7 @@ MonoBehaviour:
   maxOrders: 1
   maxCustomers: 4
   currentOrder:
-    timeToEat: 0
+    timeToEat: 100
     incomeFromOrder: 0
     FoodOrders: 
     GameManager: {fileID: 0}
@@ -149,7 +149,7 @@ MonoBehaviour:
   waiting: 0
   orderGotten: 0
   currentOrderTimer: 20
-  currentEatingTimer: 5
+  currentEatingTimer: 20
 --- !u!61 &4565937408349027601
 BoxCollider2D:
   m_ObjectHideFlags: 0

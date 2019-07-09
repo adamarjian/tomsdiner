@@ -20,18 +20,27 @@ public class SpawnCustomers : MonoBehaviour
     private LayerMask whatIsCustomer;
 
     private float currentSpawnTimer;
+    [SerializeField]
+    private Vector2 spawnPlace;
 
     // Start is called before the first frame update
     void Start()
     {
 
         currentSpawnTimer = spawnTimer;
+        spawnPlace = transform.position;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        Collider2D customerCheck = Physics2D.OverlapCircle(transform.position, 1, whatIsCustomer);
+        if (customerCheck)
+        {
+            spawnPlace = transform.position;
+        }
+
         if (canSpawn && currentSpawnTimer < 0)
         {
 
@@ -53,12 +62,13 @@ public class SpawnCustomers : MonoBehaviour
         }
 
     }
+    
 
     public void SpawnCustomer()
     {
 
-        GameObject newCustomer = Instantiate(customer, transform.position, Quaternion.identity);
-
+        GameObject newCustomer = Instantiate(customer, spawnPlace, Quaternion.identity);
+        spawnPlace += new Vector2(-10, 0);
     }
 
 }

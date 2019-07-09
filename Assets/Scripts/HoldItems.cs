@@ -56,6 +56,7 @@ public class HoldItems : MonoBehaviour
                     kitchen.foodToCook = orderHolder[0].FoodOrders[0];
                     orderHolder.Remove(orderHolder[0]);
                     kitchen.startCooking = true;
+                    removeOrder = false;
 
                 }
                 else if (collision.GetComponent<MakeFood>().ready)
